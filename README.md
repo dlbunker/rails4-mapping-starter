@@ -3,7 +3,16 @@ rails4-mapping-starter
 
 This is a sample Rails4 app that integrates Google maps and has a few mapping gems wired up and ready to go.
 
+It is very simplistic and is not intended as a best practice sample app.  
+
+It does show how to integrate with the Google Map JavaScript API and how you can pull geocoded points
+from a Mysql database.  This can easily be expanded to do more complex queries and utilize more
+complex mapping features.  You could also switch out the front end with something like AngularJS
+if you prefer that kind of UI.  For anything "enterprise" you really should consider using
+postgresql instead of mysql.
+
 ## Setup
+* Make sure you have a MySQL server in your dev env that has a "root" user with an empty password.  Otherwise you will need to configure your database.yml to match your database credentials.
 * Clone code from github to your dev env
 * Run bundle from the project root
 * Initialize the database and migrate it with `rake db:create db:migrate`
