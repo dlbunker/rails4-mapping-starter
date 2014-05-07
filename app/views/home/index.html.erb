@@ -1,0 +1,33 @@
+<body>
+  <div id="map-canvas"/>
+</body>
+
+<script type="text/javascript">
+  var map;
+
+  var mapOptions = {
+    center: new google.maps.LatLng(40.785596, -111.980673),
+    zoom: 8
+  };
+  map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+  function post_for_markers() {
+    theBounds = map.getBounds();
+    $.ajax({
+      data: {
+        swpointy: theBounds.getSouthWest().lat(),
+        swpointx: theBounds.getSouthWest().lng(),
+        nepointy: theBounds.getNorthEast().lat(),
+        nepointx: theBounds.getNorthEast().lng()
+      },
+      dataType:'script',
+      type:'post',
+      url:'/home/display_markers_in_bounds'
+    });
+  }
+
+  google.maps.event.addListener(map, 'tilesloaded', function () {
+      post_for_markers();
+  });
+
+</script>

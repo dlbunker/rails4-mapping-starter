@@ -1,0 +1,13 @@
+var myLatlng;
+var marker;
+
+<% @points.each do |p| %>
+  myLatlng = new google.maps.LatLng(<%= p.latlon.latitude %>,<%= p.latlon.longitude %>);
+  marker = new google.maps.Marker({
+      position: myLatlng,
+      map: map,
+      title: 'Point'
+  });
+
+  marker.setMap(map);
+<% end %>
